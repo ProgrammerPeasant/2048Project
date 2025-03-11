@@ -1,0 +1,33 @@
+﻿# Unity-specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# Ignore Unity generated files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.pidb
+*.booproj
+*.svd
+
+# Ignore large asset caches
+*.apk
+*.aab
+*.obb
+*.exe
+*.iso
+*.dll
+*.pdb
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
