@@ -1,0 +1,21 @@
+﻿# Unity-specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.pidb
+*.tmp
+*.bak
+*.apk
+*.aab
+*.iso
+.DS_Store
+Thumbs.db
