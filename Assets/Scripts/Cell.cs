@@ -1,10 +1,10 @@
-using System; using UnityEngine;
+using System; 
+using UnityEngine;
 
-public class Cell {
-    
+public class Cell
+{
     public event Action<int> OnValueChanged;
     public event Action<Vector2Int> OnPositionChanged;
-
     private Vector2Int _position;
     private int _value;
 

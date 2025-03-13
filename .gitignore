@@ -17,5 +17,6 @@ MemoryCaptures/
 *.apk
 *.aab
 *.iso
+*.meta
 .DS_Store
 Thumbs.db
