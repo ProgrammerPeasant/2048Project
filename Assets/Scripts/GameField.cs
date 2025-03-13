@@ -74,7 +74,7 @@ public class GameField : MonoBehaviour
             Debug.Log("Найдено позиций Cell: " + cellPositions.Count);
     }
 
-// Находит случайную незанятую позицию
+// Нахожу случайную незанятую позицию
     public Vector2Int GetEmptyPosition()
     {
         List<Vector2Int> freePositions = new List<Vector2Int>();
@@ -105,7 +105,7 @@ public class GameField : MonoBehaviour
         return freePositions[randIndex];
     }
 
-// Создаёт новую клетку с вероятностью 20% значение 4, иначе 2
+// Создаю новую клетку с вероятностью 20% значение 4, иначе 2
     public void CreateNewCell()
     {
         Vector2Int emptyPos = GetEmptyPosition();
