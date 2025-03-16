@@ -2,7 +2,9 @@ using TMPro;
 using UnityEngine; 
 using UnityEngine.UI;
 
-public class CellView : MonoBehaviour { [Header("отображение числа")] 
+public class CellView : MonoBehaviour 
+{ 
+    [Header("отображение числа")] 
     [SerializeField] private TMP_Text valueText;
     [Header("изменение цвета фона")]
     [SerializeField] private Image bgImage;
@@ -12,10 +14,13 @@ public class CellView : MonoBehaviour { [Header("отображение числ
     [SerializeField] private Color endColor = Color.yellow;
 
     private Cell cell;
+    private GameField gameField; // Добавляем ссылку на GameField
 
-    public void Init(Cell cell)
+    public void Init(Cell cell, GameField gameField)
     {
         this.cell = cell;
+        this.gameField = gameField; // Сохраняем ссылку на GameField
+        
         cell.OnValueChanged += UpdateValue;
         cell.OnPositionChanged += UpdatePosition;
         UpdateValue(cell.Value);
@@ -31,25 +36,20 @@ public class CellView : MonoBehaviour { [Header("отображение числ
         if (bgImage != null)
             bgImage.color = Color.Lerp(startColor, endColor, t);
     }
-
-    // private void UpdatePosition(Vector2Int newPos)
-    // {
-    //     //Vector3 gridStartPosition = new Vector3(65, -65, 0);
-    //     
-    //     float cellSize = 130f;
-    //     float globalX =  newPos.x * cellSize;
-    //     float globalY =  -newPos.y * cellSize;        
-    //     transform.position = new Vector3(globalX, globalY, 0f);
-    // }
     
     public void UpdatePosition(Vector2Int newPos)
     {
-        float cellSize = 130f;
-        float globalX = newPos.x * cellSize;
-        float globalY = -newPos.y * cellSize;
-
-         Debug.Log($"Updating position to: {new Vector3(globalX, globalY, 0f)} for cell at {newPos}");
-
-        transform.position = new Vector3(globalX, globalY, 0f);
+        // Используем тот же индекс и список позиций, что и при создании клеток
+        int positionIndex = newPos.y * gameField.GridWidth + newPos.x;
+        
+        if (positionIndex >= 0 && positionIndex < gameField.CellPositions.Count)
+        {
+            Vector3 targetPosition = gameField.CellPositions[positionIndex];
+            transform.position = targetPosition;
+        }
+        else
+        {
+            Debug.LogError($"Invalid position index: {positionIndex} for cell at {newPos}");
+        }
     }
 }

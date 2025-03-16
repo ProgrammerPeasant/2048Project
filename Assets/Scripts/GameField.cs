@@ -28,6 +28,9 @@ public class GameField : MonoBehaviour
     private List<Vector2> cellPositions = new List<Vector2>();
 
     private Dictionary<Cell, CellView> cellViews = new Dictionary<Cell, CellView>();
+    
+    public int GridWidth => width;
+    public List<Vector2> CellPositions => cellPositions;
 
     private int bestScore = 0;
     private string saveFileName = "saveGame.dat";
@@ -128,7 +131,7 @@ public class GameField : MonoBehaviour
         cells.Add(newCell);
 
         CellView view = Instantiate(cellViewPrefab, cellsParent);
-        view.Init(newCell);
+        view.Init(newCell, this); // Передаем ссылку на GameField
         view.transform.position = spawnPosition;
         cellViews[newCell] = view;
     }
@@ -456,7 +459,7 @@ public class GameField : MonoBehaviour
                 {
                     Vector3 spawnPos = cellPositions[posIndex];
                     CellView view = Instantiate(cellViewPrefab, cellsParent);
-                    view.Init(cell);
+                    view.Init(cell, this); // Передаем ссылку на GameField
                     view.transform.position = spawnPos;
                     cellViews[cell] = view;
                 }
