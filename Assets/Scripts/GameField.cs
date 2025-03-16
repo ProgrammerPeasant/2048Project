@@ -126,12 +126,12 @@ public class GameField : MonoBehaviour
         }
 
         Vector3 spawnPosition = cellPositions[positionIndex];
-        int value = (UnityEngine.Random.value < 0.8f) ? 1 : 2; // 1 => 2, 2 => 4
+        int value = (UnityEngine.Random.value < 0.8f) ? 1 : 2;
         Cell newCell = new Cell(emptyPos, value);
         cells.Add(newCell);
 
         CellView view = Instantiate(cellViewPrefab, cellsParent);
-        view.Init(newCell, this); // Передаем ссылку на GameField
+        view.Init(newCell, this);
         view.transform.position = spawnPosition;
         cellViews[newCell] = view;
     }
@@ -459,7 +459,7 @@ public class GameField : MonoBehaviour
                 {
                     Vector3 spawnPos = cellPositions[posIndex];
                     CellView view = Instantiate(cellViewPrefab, cellsParent);
-                    view.Init(cell, this); // Передаем ссылку на GameField
+                    view.Init(cell, this);
                     view.transform.position = spawnPos;
                     cellViews[cell] = view;
                 }

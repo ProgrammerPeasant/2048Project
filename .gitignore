@@ -20,3 +20,4 @@ MemoryCaptures/
 *.meta
 .DS_Store
 Thumbs.db
+/.idea/

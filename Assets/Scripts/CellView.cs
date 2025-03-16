@@ -14,12 +14,12 @@ public class CellView : MonoBehaviour
     [SerializeField] private Color endColor = Color.yellow;
 
     private Cell cell;
-    private GameField gameField; // Добавляем ссылку на GameField
+    private GameField gameField;
 
     public void Init(Cell cell, GameField gameField)
     {
         this.cell = cell;
-        this.gameField = gameField; // Сохраняем ссылку на GameField
+        this.gameField = gameField;
         
         cell.OnValueChanged += UpdateValue;
         cell.OnPositionChanged += UpdatePosition;
@@ -39,7 +39,6 @@ public class CellView : MonoBehaviour
     
     public void UpdatePosition(Vector2Int newPos)
     {
-        // Используем тот же индекс и список позиций, что и при создании клеток
         int positionIndex = newPos.y * gameField.GridWidth + newPos.x;
         
         if (positionIndex >= 0 && positionIndex < gameField.CellPositions.Count)
